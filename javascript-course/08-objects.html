@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objects</title>
+
+</head>
+
+<body>
+    <button class="heads">heads</button>
+    <button class="tails">tails</button>
+    <script>
+        // Object
+        /*
+                const product = {
+                    name: 'socks',
+                    price: 1090
+                };
+
+                console.log(product);
+                console.log(product.name);
+                console.log(product.price);
+
+                product.name = 'T-shirt';
+
+                console.log(product.name);
+                product.newProperty = true;
+                console.log(product);
+
+                delete product.newProperty
+                console.log(product);*/
+        /*
+                const product2 = {
+                    name: 'shirt',
+                    'delivery-time': '1 day',
+                    rating: {
+                        stars: 4.5,
+                        count: 87,
+                    },
+
+                    fun: function function1() {
+                        console.log('function inside object');
+                    }
+                };
+
+                console.log(product2);
+                console.log(product2.name);
+                console.log(product2['name']);
+                console.log(product2['delivery-time']);
+
+                console.log(product2.rating.stars);
+                product2.fun();
+
+                console.log(typeof console.log);
+
+                console.log(JSON.stringify(product2));
+                const jsonString = JSON.stringify(product2);
+                console.log(JSON.parse(jsonString));
+                */
+        /*
+                console.log('hello'.length);
+                console.log('hello'.toUpperCase());
+
+                const object1 = {
+                    message: 'hell0',
+                };
+
+                const object2 = object1;
+
+                object1.message = 'Good job!';
+                console.log(object1);
+                console.log(object2);
+
+                const object3 = {
+                    message: 'Good job',
+                };
+
+                console.log(object3 === object1);
+                console.log(object2 === object1);
+                console.log(object3.value === object1.value);
+
+                const object4 = {
+                    message: 'Good job!',
+                    price: 799,
+                };
+
+                // const message = object4.message;
+                const {
+                    message,
+                    price
+                } = object4;
+                console.log(message, price);
+
+                const object5 = {
+                    // message: message,
+                    message,
+                    // method: function function1() {
+                    //     console.log('method');
+                    // },
+
+                    method() {
+                        console.log('method');
+                    }
+                };
+
+                console.log(object5);
+                object5.method();
+
+                const product3 = {
+                    name: 'basketball',
+                    price: 2095,
+                };
+
+                console.log(product3);
+
+                product3.price += 500;
+                console.log(product3);
+
+                product3['delivery-time'] = '3 days';
+                console.log(product3);
+
+                function comparePrice(product1, product2) {
+                    if (product1.price < product2.price) {
+                        return product1;
+                    } else {
+                        return product2;
+                    }
+                }
+
+                const product1 = {
+                    name: 'basketball',
+                    price: 2095,
+                };
+
+                const product2 = {
+                    name: 'socks',
+                    price: 1090
+                }; 
+                console.log(comparePrice(product1, product2));
+                */
+
+
+        /*        function isSameProduct(product3, product4) {
+                    if (product3.name === product4.name && product3.price === product4.price) {
+                        return true;
+                    } else {
+                        return false;
+                    };
+
+                }
+                const product3 = {
+                    name: 'basketball',
+                    price: 2095,
+                };
+
+                const product4 = {
+                    name: 'basketball',
+                    price: 2095,
+                };
+                console.log(isSameProduct(product3, product4));
+        */
+
+        // Here is an alternative solution that uses less code.
+
+        /*  function isSameProduct(product1, product2) {
+              return (
+                  product1.name === product2.name && product1.price === product2.price
+              );
+          }
+
+          const product1 = {
+              name: 'basketball',
+              price: 2095
+          };
+
+          const product2 = {
+              name: 'socks',
+              price: 1090
+          };
+
+          const product5 = {
+              name: 'basketball',
+              price: 2095
+          }; 
+          
+        console.log(isSameProduct(product1, product2));
+        console.log(isSameProduct(product1, product5));
+        
+        const uppercase = 'Good Morning';
+        const lowercase = uppercase.toLowerCase();
+        console.log(lowercase);
+
+        const originalString = 'test';
+        const repeatString = originalString.repeat(2);
+        console.log(repeatString);
+          */
+
+
+        let score = JSON.parse(localStorage.getItem('score')) || {
+            wins: 0,
+            losses: 0,
+        };
+
+
+        function playGame(guess) {
+            const randomNumber = Math.random();
+            const result = randomNumber < 0.5 ? 'heads' : 'tails';
+
+
+            console.log(guess === result ? 'You win!' : 'You lose!');
+
+            if (guess === result) {
+                score.wins++;
+            } else {
+                score.losses++;
+            }
+
+            console.log(score);
+
+            localStorage.setItem('score', JSON.stringify(score));
+        }
+
+        const heads = document.querySelector('.heads');
+        const tails = document.querySelector('.tails');
+
+        heads.addEventListener('click', () => {
+            playGame(heads);
+        })
+
+        tails.addEventListener('click', () => {
+            playGame('heads');
+        })
+    </script>
+</body>
+
+</html>

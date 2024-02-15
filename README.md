@@ -1,1 +1,1 @@
-I'm learning Java Scrip from SuperSimplDev Youtube channel;
+I Just learning Java Scrip from SuperSimplDev Youtube channel;

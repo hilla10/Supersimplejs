@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Projects</title>
+
+</head>
+
+<body>
+    <button class="heads">heads</button>
+    <button class="tails">tails</button>
+    <p class="result"></p>
+
+      <input placeholder="Type something" class="js-input" onkeyup="
+        const inputElement = document.querySelector('.js-input');
+        document.querySelector('.js-message')
+          .innerHTML = inputElement.value;
+      ">
+
+      <p class="js-message"></p>
+
+    <input class="input" type="text" placeholder="Name">
+    <button class="submit">Submit</button>
+    <p class="text"></p>
+
+    <script>
+        const head = document.querySelector('.heads');
+        const tails = document.querySelector('.tails');
+        const result = document.querySelector('.result');
+        const input = document.querySelector('.input');
+        const submit = document.querySelector('.submit');
+
+
+        head.addEventListener('click', () => {
+            result.innerHTML = 'You chose. heads';
+        })
+        tails.addEventListener('click', () => {
+            result.innerHTML = 'You chose. tails';
+        })
+
+        submit.addEventListener('click', () => {
+            submitInputField()
+
+        })
+
+        input.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter') {
+                submitInputField()
+            }
+        })
+
+        input.addEventListener('keyup', (event) => {
+            submitInputField();
+        })
+
+        function submitInputField() {
+            let value = input.value;
+            document.querySelector('.text').innerHTML = `Your Name is: ${value}`;
+        }
+    </script>
+</body>
+
+</html>

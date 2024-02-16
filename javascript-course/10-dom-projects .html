@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Projects</title>
+
+</head>
+
+<style>
+    
+    body {
+       font-family: 'Arial', sans-serif; 
+    }
+    button {
+        cursor: pointer;
+        display: inline-block;
+        padding: .7rem 1rem;
+        background: none;
+        border: none;
+        text-align: center;
+        color: white;
+        font-size: .9rem;
+        font-weight: 700;
+    }
+
+    
+    .js-button {
+        background: #000;
+        border-radius: 1.2rem;
+    }
+
+    .is-subscribed {
+        background: #f0f0f0;
+        color: #000;
+    }
+
+    .calculate {
+        background: green;
+        font-weight: 500;
+    }
+
+    .js-cost-input {
+        padding: .55rem 1rem;
+        font-size: 1rem;
+        outline: none;
+        border: 2px solid rgb(3, 5, 134);
+
+    }
+
+    .js-cost-input:focus {
+        box-shadow: 0 0 4px rgb(4, 20, 65);
+    }
+
+</style>
+
+<body>
+    <p>YouTube Subscribe Button</p>
+    <button class="js-button">Subscribe</button>
+
+    <p>Amazon Shipping Calculator</p>
+    <input placeholder="Cost of order" class="js-cost-input" onkeydown="handelKeyDown(event);"></input>
+    <button class="calculate">Calculate</button>
+    <p class="js-total-cost"></p>
+
+    <script>
+        String(20);
+        console.log('25' - 5);
+        console.log('25' + 5);
+
+        // window.document
+        // window.alert('Window');
+
+        const btn = document.querySelector('.js-button');
+
+        //  Using if statement
+        function subscribe() {
+            btn.addEventListener('click', () => {
+                if (btn.innerHTML === 'Subscribe') {
+                    btn.innerHTML = 'Subscribed'
+                    btn.classList.add('is-subscribed');
+                } else {
+                    btn.innerHTML = 'Subscribe'
+                    btn.classList.remove('is-subscribed');
+                }
+            })
+        }
+
+        subscribe();
+
+        //  Using Ternary operator
+        
+        // function subscribe() {
+        //     btn.addEventListener('click', () => {
+        //         btn.innerHTML === 'Subscribe' ? btn.innerHTML = 'Subscribed' : btn.innerHTML = 'Subscribe';
+                
+        //     });
+        // };
+        // subscribe();
+
+        const calculate = document.querySelector('.calculate');
+
+        calculate.addEventListener('click', () => {
+            calculateTotal();
+        })
+
+        function calculateTotal() {
+            const inputElement = document.querySelector('.js-cost-input');
+
+            let cost = Number(inputElement.value);
+
+            if (cost < 40) {
+                cost = cost + 10;
+            }
+
+            document.querySelector('.js-total-cost').innerHTML = `$${cost}`;
+        }
+
+        function handelKeyDown(event) {
+            if (event.key === 'Enter') {
+                calculateTotal();
+            }
+        }
+    </script>
+</body>
+
+</html>
